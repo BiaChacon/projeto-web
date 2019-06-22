@@ -9,7 +9,7 @@
     <property name="hibernate.connection.password">1234</property>
 
         <property name="current_session_context_class">thread</property>
-        <property name="hbm2ddl.auto">create-drop</property>
+        <property name="hbm2ddl.auto">update</property>
         
         <!-- Configuração do pool de conexoes -->
         
@@ -29,6 +29,7 @@
 
         <mapping class="model.Usuario"/>
         <mapping class="model.Sala"/>
+        <mapping class="model.Reserva"/>
         
     </session-factory>
 </hibernate-configuration>
