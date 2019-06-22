@@ -14,7 +14,7 @@ import model.Usuario;
 
 /**
  *
- * @author bh_chacon
+ * @author BiaChacon
  */
 public class TesteUser {
     /*public static void main(String[] args) {
