@@ -2,19 +2,22 @@ package bean;
 
 import dao.UsuarioDaoImpl;
 import interfaces.IUsuarioDao;
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import model.Usuario;
 
-@ManagedBean
+@ManagedBean(name = "usuario")
 @SessionScoped
-public class CadastraUsuarioBean {
+public class UsuarioBean {
     
     private Usuario novoUsuario;
+    List<Usuario> listaUsuario;
+    IUsuarioDao ud = new UsuarioDaoImpl();
     
-    public CadastraUsuarioBean() {
+    public UsuarioBean() {
         novoUsuario = new Usuario();
     }
 
@@ -26,13 +29,21 @@ public class CadastraUsuarioBean {
         this.novoUsuario = novoUsuario;
     }
 
+    public List<Usuario> getListaUsuario() {
+        listaUsuario = ud.findAll();
+        return listaUsuario;
+    }
+
+    public void setListaUsuario(List<Usuario> listaUsuario) {
+        this.listaUsuario = listaUsuario;
+    }
+
         
-    public String cadastrar(){
-        
-        IUsuarioDao ud = new UsuarioDaoImpl();
+    public String cadastrarUsuario(){
         
 	FacesContext fc = FacesContext.getCurrentInstance();
         
+        novoUsuario.setAdmin(Boolean.FALSE);
 	ud.save(novoUsuario);
         
 	FacesMessage mensagem = new FacesMessage("Cadastro efetuado com sucesso");
@@ -43,10 +54,14 @@ public class CadastraUsuarioBean {
 	return "/index.xhtml";
         
     }
-        
-    public String cancelar(){
+    
+    public String removerUsuario(Usuario u){
+        ud.delete(u);
+        return "";
+    }
+    
+    public String cancelarCadastro(){
 	return "/index.xhtml";
     }
         
-
 }
