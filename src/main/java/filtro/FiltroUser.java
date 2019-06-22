@@ -14,7 +14,11 @@ import javax.servlet.http.HttpSession;
 
 import model.Usuario;
 
-@WebFilter("/FiltroComum")
+/**
+ *
+ * @author BiaChacon
+ */
+@WebFilter("/user")
 public class FiltroUser implements Filter {
 
     public FiltroUser() {}

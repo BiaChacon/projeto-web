@@ -15,7 +15,11 @@ import javax.servlet.http.HttpSession;
 
 import model.Usuario;
 
-@WebFilter(urlPatterns = "/cliente/*")
+/**
+ *
+ * @author BiaChacon
+ */
+@WebFilter(urlPatterns = "/admin/*")
 public class FiltroAdmin implements Filter {	
 	@Override
 	public void destroy() {			
