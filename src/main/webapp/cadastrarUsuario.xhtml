@@ -11,35 +11,39 @@
                 <h1 style="text-align: center;">Cadastro de Usuário</h1> 
                 <h:form id="frm">
                     <h:panelGrid columns="2" styleClass="grid-login">
-                        Nome:<p:inputText value="#{cadastraUsuarioBean.novoUsuario.nascimento}"
-				required="true" requiredMessage="Nome e necessario"/>
                         
-                        Telefone:<p:inputText value="#{cadastraUsuarioBean.novoUsuario.telefone}"
+                        Nome:<p:inputText id="nomeUsuario" value="#{usuario.novoUsuario.nome}"
+				required="true" requiredMessage="Nome e necessario"/>
+                                <p:message id="m1" for="nomeUsuario" style="color:red"/> 
+                        <br/>        
+                        Telefone:<p:inputText id="telefone" value="#{usuario.novoUsuario.telefone}"
 				required="true" requiredMessage="Telefone e necessario"/>
-                        
-                        Nascimento:<p:inputText id="dataLancamento" value="#{cadastraUsuarioBean.novoUsuario.nascimento}" required="true" requiredMessage="Data fora do formato dd/MM/yyyy">
-                                <f:convertDateTime pattern="dd/MM/yyyy" for="dataLancamento"/> 
-                             </p:inputText>
-                             <p:message id="m2" for="dataLancamento" style="color:red"/> 
-                        
-                             Matrícula:<p:inputText value="#{cadastraUsuarioBean.novoUsuario.matricula}"
+                                <p:message id="m2" for="telefone" style="color:red"/> 
+                        <br/>        
+                        Nascimento:<p:inputText id="nascimento" value="#{usuario.novoUsuario.nascimento}" required="true" requiredMessage="Data fora do formato dd/MM/yyyy">
+                                        <f:convertDateTime pattern="dd/MM/yyyy" for="nascimento"/> 
+                                    </p:inputText>
+                                    <p:message id="m3" for="nascimento" style="color:red"/> 
+                        <br/>
+                        Matrícula:<p:inputText id="matricula" value="#{usuario.novoUsuario.matricula}"
 				required="true" requiredMessage="Nome e necessario"/>
-                        
-                             Login: <p:inputText id="flogin" value="#{cadastraUsuarioBean.novoUsuario.login}" required="true"
+                        <br/>
+                        Login: <p:inputText id="flogin" value="#{usuario.novoUsuario.login}" required="true"
 				requiredMessage="Login e necessario">
 				<f:validateLength for="flogin" minimum="5"/>
 				</p:inputText>
-                        
-                             Senha:<p:inputText id="fsenha" value="#{cadastraUsuarioBean.novoUsuario.senha}"
+                        <br/>
+                        Senha:<p:inputText id="fsenha" value="#{usuario.novoUsuario.senha}"
 				required="true" requiredMessage="Senha e necessaria">
 				<f:validateLength for="fsenha" minimum="5"/>
 				</p:inputText>
-                        
-                             Repete Senha:<p:inputTextarea value="#{cadastraUsuarioBean.novoUsuario.repete}"/>
+                        <br/>
+                        Repete Senha:<p:inputText value="#{usuario.novoUsuario.repete}"/>
+                             
                     </h:panelGrid>		
                     <div align="center">		
-                        <h:commandButton action="#{cadastraUsuarioBean.cadastrar()}" value="Cadastrar" />
-			<h:commandButton action="#{cadastraUsuarioBean.cancelar()}" value="Cancelar" />
+                        <h:commandButton action="#{usuario.cadastrarUsuario()}" value="Cadastrar" />
+                        <h:commandButton action="#{usuario.cancelarCadastro()}" value="Cancelar" />
                     </div>	
                 </h:form>
             </div>
