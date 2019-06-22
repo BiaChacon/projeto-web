@@ -9,6 +9,10 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import model.Usuario;
 
+/**
+ *
+ * @author BiaChacon
+ */
 @ManagedBean(name = "usuario")
 @SessionScoped
 public class UsuarioBean {

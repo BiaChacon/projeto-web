@@ -8,6 +8,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import model.Sala;
 
+/**
+ *
+ * @author BiaChacon
+ */
 @ManagedBean(name = "sala")
 public class SalaBean {
     

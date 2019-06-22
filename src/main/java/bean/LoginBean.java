@@ -11,6 +11,10 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 import model.*;
 
+/**
+ *
+ * @author BiaChacon
+ */
 @ManagedBean(name="login")
 @ApplicationScoped
 public class LoginBean {
