@@ -75,10 +75,10 @@ public class LoginBean {
                 
 		if(u.getAdmin()){
                     sessao.setAttribute("admin-logado", u);
-                    return "/admin/BemVindo.xhtml";
+                    return "/admin/home.xhtml";
 		}else{
                     sessao.setAttribute("usuario-logado", u);
-                    return "/user/BemVindo.xhtml";
+                    return "/user/home.xhtml";
 		}
             }
         }
