@@ -18,6 +18,10 @@ import org.hibernate.criterion.Restrictions;
 import interfaces.IGenericDao;
 import util.HibernateUtil;
 
+/**
+ *
+ * @author BiaChacon
+ */
 public class GenericDaoImpl<T, ID extends Serializable> implements IGenericDao<T, ID> {
 
     private Class<T> klass;
