@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui = "http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template = "../templates/common.xhtml">	
+        <ui:define name = "content">				
+            
+            <h:form>
+                <p:commandButton action="#{login.deslogar()}" value="Sair" disabled=""/>    
+            </h:form>
+            
+            <h1 style="text-align: center;">Página de Administração</h1> 
+          
+            <h:form id="frm-cad">
+                <p:messages />
+                <p:fieldset legend="Cadastro de Salas">
+                    Identificador: <p:inputText value="#{sala.novaSala.identificador}"
+                                        required="true" requiredMessage="precisa de Identificador"/> <br/>
+                    
+                    
+                    Local: <p:inputText value="#{sala.novaSala.local}" required="true" 
+                                        requiredMessage="precisa de Local"/> <br/>	
+                    
+                    <p:commandButton action="#{sala.cadastrarSala()}" value="Salvar" update="frm-cad,frm-sala"/>
+                    <p:commandButton action="#{sala.cancelar()}" value="Cancelar" /> <br/>	
+                </p:fieldset>
+
+            </h:form>
+            <br/>
+            <h:form id="frm">
+                <p:messages />
+                <p:fieldset legend="Reservas realizadas">
+                    <p:dataTable var="r" value="#{reserva.listaReserva}" >
+                       
+                       <p:column>
+                       <f:facet name="header">Data</f:facet>
+                       #{r.inicio}
+                       </p:column>
+                       
+                       <p:column>
+                       <f:facet name="header">Sala</f:facet>
+                       #{r.sala.identificador}
+                       </p:column>
+                        
+                        <p:column>
+                       <f:facet name="header">Local</f:facet>
+                       #{r.sala.local}
+                       </p:column>
+                        
+                    </p:dataTable>  
+                </p:fieldset>
+            </h:form>            
+            <br/>
+            <h:form id="frm-sala">
+                <p:fieldset legend="Salas Cadastradas">
+                    <p:dataTable var="s" value="#{sala.listaSala}" >
+                       
+                        <p:column> 
+                        <f:facet name="header">Identificador</f:facet>
+                        #{s.identificador}
+                        </p:column>
+                       
+                        <p:column>
+                        <f:facet name="header">Local</f:facet>
+                        #{s.local}
+                        </p:column>
+                        
+                        <p:column>
+                        <f:facet name="header"></f:facet>
+                        <h:commandButton action="#{sala.removerSala(s)}" value="Remover"/>
+                        </p:column>
+                        
+                    </p:dataTable>  
+                </p:fieldset>
+            </h:form>
+           <br/>
+            <h:form id="frm-usuario">
+                <p:fieldset legend="Usuários Cadastrados">
+                    <p:dataTable var="u" value="#{usuario.listaUsuario}" >
+                       
+                        <p:column> 
+                        <f:facet name="header">Matricula</f:facet>
+                        #{u.matricula}
+                        </p:column>
+                       
+                        <p:column>
+                        <f:facet name="header">Nome</f:facet>
+                        #{u.nome}
+                        </p:column>
+                        
+                        <p:column>
+                        <f:facet name="header"></f:facet>
+                        <h:commandButton action="#{usuario.removerUsuario(u)}" value="Remover"/>
+                        </p:column>
+                        
+                    </p:dataTable>  
+                </p:fieldset>
+            </h:form>
+            
+        </ui:define>         
+    </ui:composition>
+</html>
