@@ -12,6 +12,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+/**
+ *
+ * @author BiaChacon
+ */
 @Entity
 @Table(name = "reserva")
 public class Reserva implements Serializable{

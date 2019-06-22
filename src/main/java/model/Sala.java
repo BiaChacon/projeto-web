@@ -14,6 +14,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/**
+ *
+ * @author BiaChacon
+ */
 @Entity
 @Table(name = "sala")
 public class Sala implements Serializable{
@@ -22,6 +26,9 @@ public class Sala implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     Integer id;
+    
+    @Column(name = "identificador")
+    String identificador;
     
     @Column(name = "local")
     String local;
@@ -52,13 +59,22 @@ public class Sala implements Serializable{
     public void setReservas(List<Reserva> reservas) {
         this.reservas = reservas;
     }
-    
+
+    public String getIdentificador() {
+        return identificador;
+    }
+
+    public void setIdentificador(String identificador) {
+        this.identificador = identificador;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 37 * hash + Objects.hashCode(this.id);
-        hash = 37 * hash + Objects.hashCode(this.local);
-        hash = 37 * hash + Objects.hashCode(this.reservas);
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(this.id);
+        hash = 53 * hash + Objects.hashCode(this.identificador);
+        hash = 53 * hash + Objects.hashCode(this.local);
+        hash = 53 * hash + Objects.hashCode(this.reservas);
         return hash;
     }
 
@@ -74,6 +90,9 @@ public class Sala implements Serializable{
             return false;
         }
         final Sala other = (Sala) obj;
+        if (!Objects.equals(this.identificador, other.identificador)) {
+            return false;
+        }
         if (!Objects.equals(this.local, other.local)) {
             return false;
         }
@@ -85,6 +104,6 @@ public class Sala implements Serializable{
         }
         return true;
     }
-
+    
     
 }
