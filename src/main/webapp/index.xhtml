@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui = "http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template = "templates/common.xhtml">	
+        <ui:define name = "content">	
+            <div id="login-dialog">
+				<h1 style="text-align: center;">Login</h1> 
+				<h:form id="frm">
+                                   
+					<p:messages id="messages" showDetail="true" closable="true">
+                                            <p:autoUpdate/>
+                                        </p:messages>
+                                        
+				<h:form>
+					<h:panelGrid columns="2">
+						<p:outputLabel for="nomeUsuario" value="Usuário" />
+		                <p:inputText id="nomeUsuario" value="#{login.login}" />
+		                    
+		                <p:outputLabel for="senha" value="Senha" />
+                                <p:password id="senha" value="#{login.senha}" />
+		                
+		                <h:commandButton value="Acessar" action="#{login.autentica()}"/>
+		                   
+		                <h:commandButton value="Não é cadastrado?" 
+		                action="/cadastrarUsuario.xhtml">
+		                </h:commandButton>
+		            </h:panelGrid>
+			</h:form>
+			</h:form>		
+            </div>
+        </ui:define>         
+    </ui:composition>
+</html>

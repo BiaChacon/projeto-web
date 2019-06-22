@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui = "http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template = "templates/common.xhtml">	
+        <ui:define name = "content">				
+            <div id="login-dialog">
+                <h1 style="text-align: center;">Cadastro de Usuário</h1> 
+                <h:form id="frm">
+                    <h:panelGrid columns="2" styleClass="grid-login">
+                        Nome:<p:inputText value="#{cadastraUsuarioBean.novoUsuario.nascimento}"
+				required="true" requiredMessage="Nome e necessario"/>
+                        
+                        Telefone:<p:inputText value="#{cadastraUsuarioBean.novoUsuario.telefone}"
+				required="true" requiredMessage="Telefone e necessario"/>
+                        
+                        Nascimento:<p:inputText id="dataLancamento" value="#{cadastraUsuarioBean.novoUsuario.nascimento}" required="true" requiredMessage="Data fora do formato dd/MM/yyyy">
+                                <f:convertDateTime pattern="dd/MM/yyyy" for="dataLancamento"/> 
+                             </p:inputText>
+                             <p:message id="m2" for="dataLancamento" style="color:red"/> 
+                        
+                             Matrícula:<p:inputText value="#{cadastraUsuarioBean.novoUsuario.matricula}"
+				required="true" requiredMessage="Nome e necessario"/>
+                        
+                             Login: <p:inputText id="flogin" value="#{cadastraUsuarioBean.novoUsuario.login}" required="true"
+				requiredMessage="Login e necessario">
+				<f:validateLength for="flogin" minimum="5"/>
+				</p:inputText>
+                        
+                             Senha:<p:inputText id="fsenha" value="#{cadastraUsuarioBean.novoUsuario.senha}"
+				required="true" requiredMessage="Senha e necessaria">
+				<f:validateLength for="fsenha" minimum="5"/>
+				</p:inputText>
+                        
+                             Repete Senha:<p:inputTextarea value="#{cadastraUsuarioBean.novoUsuario.repete}"/>
+                    </h:panelGrid>		
+                    <div align="center">		
+                        <h:commandButton action="#{cadastraUsuarioBean.cadastrar()}" value="Cadastrar" />
+			<h:commandButton action="#{cadastraUsuarioBean.cancelar()}" value="Cancelar" />
+                    </div>	
+                </h:form>
+            </div>
+        </ui:define>         
+    </ui:composition>
+</html>
