@@ -5,7 +5,11 @@ import java.util.List;
 import java.util.Map;
 
 import org.hibernate.criterion.Order; 
- 
+
+/**
+ *
+ * @author BiaChacon
+ */
 public interface IGenericDao<T, ID extends Serializable> { 
  
     void save(T object); 
