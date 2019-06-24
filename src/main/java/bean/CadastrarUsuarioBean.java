@@ -2,7 +2,6 @@ package bean;
 
 import dao.UsuarioDaoImpl;
 import interfaces.IUsuarioDao;
-import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -18,7 +17,6 @@ import model.Usuario;
 public class CadastrarUsuarioBean {
     
     private Usuario novoUsuario;
-    List<Usuario> listaUsuario;
     IUsuarioDao ud = new UsuarioDaoImpl();
     
     public CadastrarUsuarioBean() {
@@ -32,17 +30,7 @@ public class CadastrarUsuarioBean {
     public void setNovoUsuario(Usuario novoUsuario) {
         this.novoUsuario = novoUsuario;
     }
-
-    public List<Usuario> getListaUsuario() {
-        listaUsuario = ud.findAll();
-        return listaUsuario;
-    }
-
-    public void setListaUsuario(List<Usuario> listaUsuario) {
-        this.listaUsuario = listaUsuario;
-    }
-
-        
+  
     public String cadastrarUsuario(){
         
 	FacesContext fc = FacesContext.getCurrentInstance();
@@ -57,11 +45,6 @@ public class CadastrarUsuarioBean {
         novoUsuario = new Usuario();
 	return "/index.xhtml";
         
-    }
-    
-    public String removerUsuario(Usuario u){
-        ud.delete(u);
-        return "";
     }
     
     public String cancelarCadastro(){

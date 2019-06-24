@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui = "http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template = "../templates/common.xhtml">	
+        <ui:define name = "content">				
+            <div id="login-dialog">
+                <h1>Editar dados</h1> 
+                <h:form id="frm">
+                    <h:panelGrid>
+                        
+                        Nome:
+                        <br/>
+                        <p:inputText id="nomeUsuario" value="#{usuario.user.nome}"
+				required="true" requiredMessage="Nome é necessario"/>
+                                <p:message id="m1" for="nomeUsuario" style="color:red"/> 
+                        <br/>        
+                        Telefone:<p:inputText id="telefone" value="#{usuario.user.telefone}"
+				required="true" requiredMessage="Telefone é necessario"/>
+                                <p:message id="m2" for="telefone" style="color:red"/> 
+                        <br/>        
+                        Nascimento:<p:inputText id="nascimento" value="#{usuario.user.nascimento}" required="true" requiredMessage="Data fora do formato dd/MM/yyyy">
+                                        <f:convertDateTime pattern="dd/MM/yyyy" for="nascimento"/> 
+                                    </p:inputText>
+                                    <p:message id="m3" for="nascimento" style="color:red"/> 
+                        <br/>
+                        Matrícula:<p:inputText id="matricula" value="#{usuario.user.matricula}"
+				required="true" requiredMessage="Matricula é necessario">
+                                </p:inputText>
+                                <p:message id="m4" for="matricula" style="color:red"/> 
+                        <br/>
+                        Login: <p:inputText id="flogin" value="#{usuario.user.login}" required="true"
+				requiredMessage="Login é necessario">
+				<f:validateLength for="flogin" minimum="5"/>
+				</p:inputText>
+                                <p:message id="m5" for="flogin" style="color:red"/> 
+                        <br/>
+                        Senha:<p:inputText id="fsenha" value="#{usuario.user.senha}"
+				required="true" requiredMessage="Senha é necessaria">
+				<f:validateLength for="fsenha" minimum="5"/>
+				</p:inputText>
+                                <p:message id="m6" for="fsenha" style="color:red"/> 
+                       
+                    </h:panelGrid>
+                    <br/>	
+                    <h:commandButton action="#{usuario.editar()}" value="Editar" />
+                    <a/>
+                    <h:commandButton action="/user/home.xhtml" value="Cancelar" />
+                   	
+                </h:form>
+            </div>
+        </ui:define>         
+    </ui:composition>
+</html>

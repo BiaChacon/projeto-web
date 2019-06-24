@@ -45,10 +45,7 @@ public class Usuario implements Serializable{
     
     @Column(name = "senha")
     String senha;
-    
-    @Column(name = "repete")
-    String repete;
-    
+  
     @Column(name = "admin")
     Boolean admin; //se == true, é admin
 
@@ -121,14 +118,6 @@ public class Usuario implements Serializable{
         this.senha = senha;
     }
 
-    public String getRepete() {
-        return repete;
-    }
-
-    public void setRepete(String repete) {
-        this.repete = repete;
-    }
-
     public Boolean getAdmin() {
         return admin;
     }
@@ -151,16 +140,15 @@ public class Usuario implements Serializable{
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 29 * hash + Objects.hashCode(this.id);
-        hash = 29 * hash + Objects.hashCode(this.nome);
-        hash = 29 * hash + Objects.hashCode(this.telefone);
-        hash = 29 * hash + Objects.hashCode(this.nascimento);
-        hash = 29 * hash + Objects.hashCode(this.matricula);
-        hash = 29 * hash + Objects.hashCode(this.login);
-        hash = 29 * hash + Objects.hashCode(this.senha);
-        hash = 29 * hash + Objects.hashCode(this.repete);
-        hash = 29 * hash + Objects.hashCode(this.admin);
-        hash = 29 * hash + Objects.hashCode(this.reservas);
+        hash = 97 * hash + Objects.hashCode(this.id);
+        hash = 97 * hash + Objects.hashCode(this.nome);
+        hash = 97 * hash + Objects.hashCode(this.telefone);
+        hash = 97 * hash + Objects.hashCode(this.nascimento);
+        hash = 97 * hash + Objects.hashCode(this.matricula);
+        hash = 97 * hash + Objects.hashCode(this.login);
+        hash = 97 * hash + Objects.hashCode(this.senha);
+        hash = 97 * hash + Objects.hashCode(this.admin);
+        hash = 97 * hash + Objects.hashCode(this.reservas);
         return hash;
     }
 
@@ -191,9 +179,6 @@ public class Usuario implements Serializable{
         if (!Objects.equals(this.senha, other.senha)) {
             return false;
         }
-        if (!Objects.equals(this.repete, other.repete)) {
-            return false;
-        }
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
@@ -208,5 +193,5 @@ public class Usuario implements Serializable{
         }
         return true;
     }
-    	
+
 }

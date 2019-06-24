@@ -71,11 +71,11 @@ public class Reserva implements Serializable{
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 89 * hash + Objects.hashCode(this.id);
-        hash = 89 * hash + Objects.hashCode(this.inicio);
-        hash = 89 * hash + Objects.hashCode(this.sala);
-        hash = 89 * hash + Objects.hashCode(this.usuario);
+        int hash = 5;
+        hash = 29 * hash + Objects.hashCode(this.id);
+        hash = 29 * hash + Objects.hashCode(this.inicio);
+        hash = 29 * hash + Objects.hashCode(this.sala);
+        hash = 29 * hash + Objects.hashCode(this.usuario);
         return hash;
     }
 
@@ -105,5 +105,5 @@ public class Reserva implements Serializable{
         }
         return true;
     }
-	
+    
 }

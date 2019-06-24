@@ -17,15 +17,17 @@
             <h:form id="frm-cad">
                 <p:messages />
                 <p:fieldset legend="Cadastro de Salas">
-                    Identificador: <p:inputText value="#{sala.novaSala.identificador}"
-                                        required="true" requiredMessage="precisa de Identificador"/> <br/>
-                    
-                    
-                    Local: <p:inputText value="#{sala.novaSala.local}" required="true" 
+                    Identificador: <br/> <p:inputText value="#{sala.novaSala.identificador}"
+                                        required="true" requiredMessage="precisa de Identificador"/><br/>
+    
+                    <br/>
+                    Local:<br/> <p:inputText value="#{sala.novaSala.local}" required="true" 
                                         requiredMessage="precisa de Local"/> <br/>	
-                    
+                    <br/>
                     <p:commandButton action="#{sala.cadastrarSala()}" value="Salvar" update="frm-cad,frm-sala"/>
+                    <a/>
                     <p:commandButton action="#{sala.cancelar()}" value="Cancelar" /> <br/>	
+               
                 </p:fieldset>
 
             </h:form>
@@ -54,6 +56,11 @@
                        <f:facet name="header">Responsável</f:facet>
                        #{r.usuario.nome}
                        </p:column>
+                       
+                        <p:column>
+                        <f:facet name="header"></f:facet>
+                        <h:commandButton action="#{reserva.removerReservar(r)}" value="Cancelar"/>
+                        </p:column>
                         
                     </p:dataTable>  
                 </p:fieldset>
@@ -84,7 +91,7 @@
            <br/>
             <h:form id="frm-usuario">
                 <p:fieldset legend="Usuários Cadastrados">
-                    <p:dataTable var="u" value="#{cadastro.listaUsuario}" >
+                    <p:dataTable var="u" value="#{admin.listaUsuario}" >
                        
                         <p:column> 
                         <f:facet name="header">Matricula</f:facet>
@@ -98,13 +105,14 @@
                         
                         <p:column>
                         <f:facet name="header"></f:facet>
-                        <h:commandButton action="#{usuario.removerUsuario(u)}" value="Remover"/>
+                        <h:commandButton action="#{admin.removerUsuario(u)}" value="Remover"/>
                         </p:column>
                         
                     </p:dataTable>  
                 </p:fieldset>
             </h:form>
-            
+           
+           
         </ui:define>         
     </ui:composition>
 </html>

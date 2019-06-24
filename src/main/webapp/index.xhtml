@@ -7,29 +7,29 @@
     <ui:composition template = "templates/common.xhtml">	
         <ui:define name = "content">	
             <div id="login-dialog">
-				<h1 style="text-align: center;">Login</h1> 
-				<h:form id="frm">
-                                   
-					<p:messages id="messages" showDetail="true" closable="true">
-                                            <p:autoUpdate/>
-                                        </p:messages>
-                                        
-				<h:form>
-					<h:panelGrid columns="2">
-						<p:outputLabel for="nomeUsuario" value="Usuário" />
-		                <p:inputText id="nomeUsuario" value="#{login.login}" />
-		                    
-		                <p:outputLabel for="senha" value="Senha" />
-                                <p:password id="senha" value="#{login.senha}" />
-		                
-		                <h:commandButton value="Login" action="#{login.autentica()}"/>
-		                   
-		                <h:commandButton value="Cadastre-se" 
-		                action="/cadastrarUsuario.xhtml">
-		                </h:commandButton>
-		            </h:panelGrid>
-			</h:form>
-			</h:form>		
+                <h1>Login</h1> 
+		<h:form id="frm">
+                    <p:messages id="messages" showDetail="true" closable="true">
+                     <p:autoUpdate/>
+                    </p:messages>
+		</h:form>
+                <br/>
+                <h:form>
+                    <h:panelGrid>
+                        <p:outputLabel for="nomeUsuario" value="Usuário" />
+                        <p:inputText id="nomeUsuario" value="#{login.login}" />
+                        <br/>
+                        <p:outputLabel for="senha" value="Senha" />
+                        <p:password id="senha" value="#{login.senha}" />
+                        <br/>
+                        <h:form>
+                        <p:commandButton value="Login" action="#{login.autentica()}"/>
+                        <a/>
+                        <p:commandButton value="Cadastre-se" action="/cadastrarUsuario.xhtml"/>        
+                        </h:form>
+		    </h:panelGrid>
+                </h:form>
+		       
             </div>
         </ui:define>         
     </ui:composition>

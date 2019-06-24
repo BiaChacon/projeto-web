@@ -2,21 +2,18 @@
 	width: 450px;
 	margin: auto;
 	margin-top: 5px;
+        background-color: white;
+        border-radius: 15px;
+       font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;  
+
 }
-.grid-login {
-	background-color: #f2f2f2;
-	border-radius: 8px;
-	border: 1px solid #ccc;
-	margin-top: 8px;
-	padding: 20px;
-	width: 100%;
-	margin-bottom: 8px
-}
+   
+
 
 .relative{
 	position:relative;
 }
 .absolute-text{
-	position:absolute; bottom:0; font-size:15px; font-family:"vedana"; background:rgba(251,251,251,0.5);
+	position:absolute; bottom:0; font-size:15px; font-family:"vedana"; background:black;
 	width:100%; text-align:center;
 }

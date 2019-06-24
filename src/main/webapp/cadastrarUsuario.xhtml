@@ -8,18 +8,18 @@
     <ui:composition template = "templates/common.xhtml">	
         <ui:define name = "content">				
             <div id="login-dialog">
-                <h1 style="text-align: center;">Cadastro de Usuário</h1> 
+                <h1>Cadastro de Usuário</h1> 
                 <h:form id="frm">
                     <h:panelGrid>
                         
                         Nome:
                         <br/>
                         <p:inputText id="nomeUsuario" value="#{cadastro.novoUsuario.nome}"
-				required="true" requiredMessage="Nome e necessario"/>
+				required="true" requiredMessage="Nome é necessario"/>
                                 <p:message id="m1" for="nomeUsuario" style="color:red"/> 
                         <br/>        
                         Telefone:<p:inputText id="telefone" value="#{cadastro.novoUsuario.telefone}"
-				required="true" requiredMessage="Telefone e necessario"/>
+				required="true" requiredMessage="Telefone é necessario"/>
                                 <p:message id="m2" for="telefone" style="color:red"/> 
                         <br/>        
                         Nascimento:<p:inputText id="nascimento" value="#{cadastro.novoUsuario.nascimento}" required="true" requiredMessage="Data fora do formato dd/MM/yyyy">
@@ -28,27 +28,28 @@
                                     <p:message id="m3" for="nascimento" style="color:red"/> 
                         <br/>
                         Matrícula:<p:inputText id="matricula" value="#{cadastro.novoUsuario.matricula}"
-				required="true" requiredMessage="Nome e necessario"/>
+				required="true" requiredMessage="Matricula é necessario">
+                                </p:inputText>
+                                <p:message id="m4" for="matricula" style="color:red"/> 
                         <br/>
                         Login: <p:inputText id="flogin" value="#{cadastro.novoUsuario.login}" required="true"
-				requiredMessage="Login e necessario">
+				requiredMessage="Login é necessario">
 				<f:validateLength for="flogin" minimum="5"/>
 				</p:inputText>
+                                <p:message id="m5" for="flogin" style="color:red"/> 
                         <br/>
                         Senha:<p:inputText id="fsenha" value="#{cadastro.novoUsuario.senha}"
-				required="true" requiredMessage="Senha e necessaria">
+				required="true" requiredMessage="Senha é necessaria">
 				<f:validateLength for="fsenha" minimum="5"/>
 				</p:inputText>
-                        <br/>
-                        Repete Senha:<p:inputText value="#{cadastro.novoUsuario.repete}"/>
-                             
+                                <p:message id="m6" for="fsenha" style="color:red"/> 
+                       
                     </h:panelGrid>
-                    <br/>
-                    <div align="center">		
-                        <p:commandButton action="#{cadastro.cadastrarUsuario()}" value="Cadastrar" />
-                        <a/>
-                        <p:commandButton action="#{cadastro.cancelarCadastro()}" value="Cancelar" />
-                    </div>	
+                    <br/>	
+                    <h:commandButton action="#{cadastro.cadastrarUsuario()}" value="Cadastrar" />
+                    <a/>
+                    <h:commandButton action="#{cadastro.cancelarCadastro()}" value="Cancelar" />
+                   	
                 </h:form>
             </div>
         </ui:define>         
