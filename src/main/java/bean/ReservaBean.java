@@ -1,7 +1,9 @@
 package bean;
 
 import dao.ReservaDaoImpl;
+import dao.SalaDaoImpl;
 import interfaces.IReservaDao;
+import interfaces.ISalaDao;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -23,6 +25,7 @@ public class ReservaBean {
    private Reserva novaReserva;
    List<Reserva> listaReserva;
    IReservaDao rd = new ReservaDaoImpl();
+   ISalaDao sd = new SalaDaoImpl();
 
     public ReservaBean() {
         novaReserva = new Reserva();
@@ -62,12 +65,12 @@ public class ReservaBean {
         novaReserva.setInicio(agora);
         
         rd.save(novaReserva);
-        
+      
         novaReserva = new Reserva();
         return "";
     }
 
-    public String removerReservar(Reserva r){
+    public String removerReservar(Reserva r){ 
         rd.delete(r);
         return "";
     }

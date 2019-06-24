@@ -45,9 +45,14 @@
                        #{r.sala.identificador}
                        </p:column>
                         
-                        <p:column>
+                       <p:column>
                        <f:facet name="header">Local</f:facet>
                        #{r.sala.local}
+                       </p:column>
+                        
+                       <p:column>
+                       <f:facet name="header">Responsável</f:facet>
+                       #{r.usuario.nome}
                        </p:column>
                         
                     </p:dataTable>  
@@ -79,7 +84,7 @@
            <br/>
             <h:form id="frm-usuario">
                 <p:fieldset legend="Usuários Cadastrados">
-                    <p:dataTable var="u" value="#{usuario.listaUsuario}" >
+                    <p:dataTable var="u" value="#{cadastro.listaUsuario}" >
                        
                         <p:column> 
                         <f:facet name="header">Matricula</f:facet>

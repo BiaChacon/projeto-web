@@ -17,7 +17,7 @@
             
             <h:form id="frm-res">
                 <p:fieldset legend="Sala que reservei">
-                    <p:dataTable var="r" value="#{reserva.listaReserva}" >
+                    <p:dataTable var="r" value="#{usuario.listaReserva}" >
                         
                        <p:column>
                        <f:facet name="header">Sala</f:facet>
@@ -45,7 +45,7 @@
             <br/>
             <h:form id="frm">
                 <p:fieldset legend="Salas disponíveis para reserva">
-                    <p:dataTable var="s" value="#{sala.listaSala}" >
+                    <p:dataTable var="s" value="#{usuario.listaSalaDisp}" >
                        
                        <p:column>
                        <f:facet name="header">Identificador</f:facet>
@@ -65,6 +65,11 @@
 
                 </p:fieldset>
             </h:form>
+            
+        <br/>    
+        <h:form>
+            <p:commandButton action="#{usuario.listaSalaDisp()}" value="Teste" disabled=""/>    
+        </h:form> 
             
         </ui:define>         
     </ui:composition>
