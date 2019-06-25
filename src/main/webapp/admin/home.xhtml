@@ -91,7 +91,7 @@
            <br/>
             <h:form id="frm-usuario">
                 <p:fieldset legend="Usuários Cadastrados">
-                    <p:dataTable var="u" value="#{admin.listaUsuario}" >
+                    <p:dataTable var="u" value="#{usuario.listaUsuario}" >
                        
                         <p:column> 
                         <f:facet name="header">Matricula</f:facet>
@@ -105,7 +105,7 @@
                         
                         <p:column>
                         <f:facet name="header"></f:facet>
-                        <h:commandButton action="#{admin.removerUsuario(u)}" value="Remover"/>
+                        <h:commandButton action="#{usuario.removerUsuario(u)}" value="Remover"/>
                         </p:column>
                         
                     </p:dataTable>  

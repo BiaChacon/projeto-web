@@ -27,9 +27,24 @@ public class UsuarioBean {
     ISalaDao sd = new SalaDaoImpl();
     Usuario user;
     IUsuarioDao ud = new UsuarioDaoImpl();
+    List<Usuario> listaUsuario;
+
+    public List<Usuario> getListaUsuario() {
+        listaUsuario = ud.findAll();
+        return listaUsuario;
+    }
+
+    public void setListaUsuario(List<Usuario> listaUsuario) {
+        this.listaUsuario = listaUsuario;
+    }
     
     public UsuarioBean() {}
-
+    
+    public String removerUsuario(Usuario u){
+        ud.delete(u);
+        return "";
+    } 
+    
     public List<Reserva> getListaReserva() {
         FacesContext fc = FacesContext.getCurrentInstance();
         ExternalContext ec = fc.getExternalContext();
