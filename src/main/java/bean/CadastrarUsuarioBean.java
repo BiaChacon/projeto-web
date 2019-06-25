@@ -13,7 +13,6 @@ import model.Usuario;
  * @author BiaChacon
  */
 @ManagedBean(name = "cadastro")
-@SessionScoped
 public class CadastrarUsuarioBean {
     
     private Usuario novoUsuario;

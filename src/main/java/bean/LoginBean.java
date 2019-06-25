@@ -16,7 +16,6 @@ import model.*;
  * @author BiaChacon
  */
 @ManagedBean(name="login")
-@ApplicationScoped
 public class LoginBean {
     
     private String login;
@@ -63,6 +62,8 @@ public class LoginBean {
         
         IUsuarioDao ud = new UsuarioDaoImpl();
         listaUsuario = ud.findAll();
+        
+        System.out.println("teste");
         
 	boolean logou = false;
 	FacesContext fc = FacesContext.getCurrentInstance();

@@ -9,6 +9,8 @@
     <ui:composition template = "../templates/common.xhtml">	
         <ui:define name = "content">				
             <div id="login-dialog">
+                <center>
+                <br/>
                 <h1>Editar dados</h1> 
                 <h:form id="frm">
                     <h:panelGrid>
@@ -47,11 +49,13 @@
                        
                     </h:panelGrid>
                     <br/>	
-                    <h:commandButton action="#{usuario.editar()}" value="Editar" />
+                    <p:commandButton action="#{usuario.editar()}" value="Editar" />
                     <a/>
-                    <h:commandButton action="/user/home.xhtml" value="Cancelar" />
+                    <p:commandButton action="/user/home.xhtml" value="Cancelar" />
                    	
                 </h:form>
+                <br/>
+                </center>
             </div>
         </ui:define>         
     </ui:composition>

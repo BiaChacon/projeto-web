@@ -6,10 +6,7 @@ import interfaces.ISalaDao;
 import interfaces.IUsuarioDao;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpSession;
+import javax.faces.bean.ManagedProperty;
 import model.Reserva;
 import model.Sala;
 import model.Usuario;
@@ -19,13 +16,17 @@ import model.Usuario;
  * @author BiaChacon
  */
 @ManagedBean(name = "usuario")
-@SessionScoped
 public class UsuarioBean {
 
+    @ManagedProperty (value = "#{sessionScope['usuario-logado']}")
+    Usuario user;
+    
+    @ManagedProperty (value = "#{sessionScope['usuario-logado'].reservas}")
     List<Reserva> listaReserva;
+    
     List<Sala> listaSalaDisp;
     ISalaDao sd = new SalaDaoImpl();
-    Usuario user;
+   
     IUsuarioDao ud = new UsuarioDaoImpl();
     List<Usuario> listaUsuario;
 
@@ -38,7 +39,9 @@ public class UsuarioBean {
         this.listaUsuario = listaUsuario;
     }
     
-    public UsuarioBean() {}
+    public UsuarioBean() {
+        user = new Usuario();
+    }
     
     public String removerUsuario(Usuario u){
         ud.delete(u);
@@ -46,20 +49,22 @@ public class UsuarioBean {
     } 
     
     public List<Reserva> getListaReserva() {
+        /*
         FacesContext fc = FacesContext.getCurrentInstance();
         ExternalContext ec = fc.getExternalContext();
         HttpSession s = (HttpSession) ec.getSession(false);
         Usuario u = (Usuario) s.getAttribute("usuario-logado");
         listaReserva = u.getReservas();
-        return listaReserva;
+        */
+        return this.listaReserva;
     }
 
     public Usuario getUser() {
-        FacesContext fc = FacesContext.getCurrentInstance();
+        /*FacesContext fc = FacesContext.getCurrentInstance();
         ExternalContext ec = fc.getExternalContext();
         HttpSession s = (HttpSession) ec.getSession(false);
-        user = (Usuario) s.getAttribute("usuario-logado");
-        return user;
+        user = (Usuario) s.getAttribute("usuario-logado");*/
+        return this.user;
     }
 
     public void setUser(Usuario user) {
@@ -83,8 +88,10 @@ public class UsuarioBean {
     }
     
     public String editar(){
+        System.out.println("bean.UsuarioBean.editar()");
         Usuario s = user;
        s.setId(user.getId());
+        System.out.println(s.getId());
        ud.save(s);
         return "/user/home.xhtml";
     } 

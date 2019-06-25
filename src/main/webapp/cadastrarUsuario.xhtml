@@ -8,6 +8,8 @@
     <ui:composition template = "templates/common.xhtml">	
         <ui:define name = "content">				
             <div id="login-dialog">
+                <center>
+                    <br/>
                 <h1>Cadastro de Usuário</h1> 
                 <h:form id="frm">
                     <h:panelGrid>
@@ -48,9 +50,11 @@
                     <br/>	
                     <h:commandButton action="#{cadastro.cadastrarUsuario()}" value="Cadastrar" />
                     <a/>
-                    <h:commandButton action="#{cadastro.cancelarCadastro()}" value="Cancelar" />
-                   	
+                    <h:commandButton immediate="true" action="#{cadastro.cancelarCadastro()}" value="Cancelar" />
+                    
                 </h:form>
+                <br/>
+                </center>
             </div>
         </ui:define>         
     </ui:composition>
