@@ -26,7 +26,8 @@
                     <br/>
                     <p:commandButton action="#{sala.cadastrarSala()}" value="Salvar" update="frm-cad,frm-sala"/>
                     <a/>
-                    <p:commandButton action="#{sala.cancelar()}" value="Cancelar" /> <br/>	
+                    <p:commandButton value="Cancelar" ajax="true" immediate="true" type="reset"/> <br/>	
+                    
                
                 </p:fieldset>
 

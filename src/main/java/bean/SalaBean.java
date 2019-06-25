@@ -60,9 +60,4 @@ public class SalaBean {
 	return "";
     }    
     
-    public String cancelar(){
-        //novaSala= new Sala();
-	return "";
-    }
-    
 }
