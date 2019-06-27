@@ -59,6 +59,11 @@
                        </p:column>
                        
                         <p:column>
+                       <f:facet name="header">Cancelada</f:facet>
+                       #{r.cancelada}
+                       </p:column>
+                        
+                        <p:column>
                         <f:facet name="header"></f:facet>
                         <h:commandButton action="#{reserva.removerReservar(r)}" value="Cancelar"/>
                         </p:column>

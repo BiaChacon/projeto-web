@@ -11,5 +11,7 @@ public class ReservaDaoImpl extends GenericDaoImpl<Reserva, Integer> implements 
 
     public ReservaDaoImpl() {
         super(Reserva.class);
-    }    
+    } 
+    
 }
+ 

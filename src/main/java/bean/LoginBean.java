@@ -4,7 +4,6 @@ import dao.UsuarioDaoImpl;
 import interfaces.IUsuarioDao;
 import java.util.List;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -23,8 +22,7 @@ public class LoginBean {
     Usuario usuario;
     List<Usuario> listaUsuario;
     
-    public LoginBean() {
-    }
+    public LoginBean() {}
 
     public Usuario getUsuario() {
         return usuario;
@@ -107,7 +105,7 @@ public class LoginBean {
 	sessao.invalidate();
 	FacesMessage mensagem = new FacesMessage("saiu");
 	mensagem.setSeverity(FacesMessage.SEVERITY_INFO);
-	fc.addMessage(null, mensagem);
+        fc.addMessage(null, mensagem);
 	return "/index.xhtml";
         
     }

@@ -1,6 +1,8 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,7 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -31,8 +33,16 @@ public class Sala implements Serializable{
     @Column(name = "local")
     String local;
 
-    @OneToOne(mappedBy="sala", fetch = FetchType.LAZY, orphanRemoval=true, cascade = CascadeType.ALL)
-    Reserva reserva;
+    @OneToMany(mappedBy="sala", fetch = FetchType.LAZY, orphanRemoval=true, cascade = CascadeType.ALL)
+    private List<Reserva> reservas = new ArrayList<Reserva>();
+
+    public List<Reserva> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(List<Reserva> reservas) {
+        this.reservas = reservas;
+    }
 
     public Integer getId() {
         return id;
@@ -58,21 +68,13 @@ public class Sala implements Serializable{
         this.identificador = identificador;
     }
 
-    public Reserva getReserva() {
-        return reserva;
-    }
-
-    public void setReserva(Reserva reserva) {
-        this.reserva = reserva;
-    }
-
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 97 * hash + Objects.hashCode(this.id);
-        hash = 97 * hash + Objects.hashCode(this.identificador);
-        hash = 97 * hash + Objects.hashCode(this.local);
-        hash = 97 * hash + Objects.hashCode(this.reserva);
+        int hash = 7;
+        hash = 43 * hash + Objects.hashCode(this.id);
+        hash = 43 * hash + Objects.hashCode(this.identificador);
+        hash = 43 * hash + Objects.hashCode(this.local);
+        hash = 43 * hash + Objects.hashCode(this.reservas);
         return hash;
     }
 
@@ -97,10 +99,11 @@ public class Sala implements Serializable{
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        if (!Objects.equals(this.reserva, other.reserva)) {
+        if (!Objects.equals(this.reservas, other.reservas)) {
             return false;
         }
         return true;
     }
-        
+
+
 }

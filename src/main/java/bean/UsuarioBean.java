@@ -1,10 +1,15 @@
 package bean;
 
+import dao.ReservaDaoImpl;
 import dao.SalaDaoImpl;
 import dao.UsuarioDaoImpl;
+import interfaces.IReservaDao;
 import interfaces.ISalaDao;
 import interfaces.IUsuarioDao;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import model.Reserva;
@@ -24,14 +29,33 @@ public class UsuarioBean {
     @ManagedProperty (value = "#{sessionScope['usuario-logado'].reservas}")
     List<Reserva> listaReserva;
     
-    List<Sala> listaSalaDisp;
-    ISalaDao sd = new SalaDaoImpl();
-   
-    IUsuarioDao ud = new UsuarioDaoImpl();
     List<Usuario> listaUsuario;
-
+    
+    List<Sala> listaSalaDisp;
+    
+    public UsuarioBean() {}
+    
+    public List<Reserva> getListaReserva() {
+        
+        /*for(Reserva i : listaReserva){
+            if(i.getCancelada()){
+               listaReserva.remove(i);
+            }
+        }*/
+        return listaReserva;
+    }
+    
+    public void setListaReserva(List<Reserva> listaReserva) {
+        this.listaReserva = listaReserva;
+    }
+    
     public List<Usuario> getListaUsuario() {
-        listaUsuario = ud.findAll();
+        
+        IUsuarioDao ud = new UsuarioDaoImpl();
+        Map<String, Object> condition = new HashMap<>();
+        condition.put("admin", false);
+        listaUsuario = ud.findAllByMulti(condition);
+        
         return listaUsuario;
     }
 
@@ -39,43 +63,31 @@ public class UsuarioBean {
         this.listaUsuario = listaUsuario;
     }
     
-    public UsuarioBean() {
-        user = new Usuario();
-    }
-    
-    public String removerUsuario(Usuario u){
-        ud.delete(u);
-        return "";
-    } 
-    
-    public List<Reserva> getListaReserva() {
-        /*
-        FacesContext fc = FacesContext.getCurrentInstance();
-        ExternalContext ec = fc.getExternalContext();
-        HttpSession s = (HttpSession) ec.getSession(false);
-        Usuario u = (Usuario) s.getAttribute("usuario-logado");
-        listaReserva = u.getReservas();
-        */
-        return this.listaReserva;
-    }
-
     public Usuario getUser() {
-        /*FacesContext fc = FacesContext.getCurrentInstance();
-        ExternalContext ec = fc.getExternalContext();
-        HttpSession s = (HttpSession) ec.getSession(false);
-        user = (Usuario) s.getAttribute("usuario-logado");*/
-        return this.user;
+        return user;
     }
 
     public void setUser(Usuario user) {
         this.user = user;
     }
-
-    public void setListaReserva(List<Reserva> listaReserva) {
-        this.listaReserva = listaReserva;
-    }
-
+    
     public List<Sala> getListaSalaDisp() {
+        
+       IReservaDao rd = new ReservaDaoImpl();
+       List<Reserva> reservas;
+       Map<String, Object> condition = new HashMap<>();
+       condition.put("cancelada", false);
+       reservas =  rd.findAllByMulti(condition);
+       List<Sala> listaSalaReservadas = new ArrayList<>();
+       
+       ISalaDao sd = new SalaDaoImpl();
+       List<Sala> listaSalaD = sd.findAll();
+       
+        for(Reserva i : reservas){
+           listaSalaReservadas.add(i.getSala());
+        }
+        
+        listaSalaDisp = listaSalaD;
         return listaSalaDisp;
     }
 
@@ -83,16 +95,19 @@ public class UsuarioBean {
         this.listaSalaDisp = listaSalaDisp;
     }
     
+    public String removerUsuario(Usuario u){
+        IUsuarioDao ud = new UsuarioDaoImpl();
+        ud.delete(u);
+        return "";
+    } 
+    
     public String editarDados(){
         return "editar.xhtml";
     }
     
     public String editar(){
-        System.out.println("bean.UsuarioBean.editar()");
-        Usuario s = user;
-       s.setId(user.getId());
-        System.out.println(s.getId());
-       ud.save(s);
+        IUsuarioDao ud = new UsuarioDaoImpl();
+        ud.save(user);
         return "/user/home.xhtml";
     } 
     

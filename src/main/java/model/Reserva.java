@@ -10,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -29,7 +28,10 @@ public class Reserva implements Serializable{
     @Column(name = "inicio")
     private Date inicio;
 
-    @OneToOne
+    @Column(name = "cancelada")
+    Boolean cancelada;
+    
+    @ManyToOne
     @JoinColumn(name="fk_sala")
     private Sala sala;
     
@@ -69,13 +71,22 @@ public class Reserva implements Serializable{
         this.usuario = usuario;
     }
 
+    public Boolean getCancelada() {
+        return cancelada;
+    }
+
+    public void setCancelada(Boolean cancelada) {
+        this.cancelada = cancelada;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 29 * hash + Objects.hashCode(this.id);
-        hash = 29 * hash + Objects.hashCode(this.inicio);
-        hash = 29 * hash + Objects.hashCode(this.sala);
-        hash = 29 * hash + Objects.hashCode(this.usuario);
+        int hash = 3;
+        hash = 41 * hash + Objects.hashCode(this.id);
+        hash = 41 * hash + Objects.hashCode(this.inicio);
+        hash = 41 * hash + Objects.hashCode(this.cancelada);
+        hash = 41 * hash + Objects.hashCode(this.sala);
+        hash = 41 * hash + Objects.hashCode(this.usuario);
         return hash;
     }
 
@@ -97,6 +108,9 @@ public class Reserva implements Serializable{
         if (!Objects.equals(this.inicio, other.inicio)) {
             return false;
         }
+        if (!Objects.equals(this.cancelada, other.cancelada)) {
+            return false;
+        }
         if (!Objects.equals(this.sala, other.sala)) {
             return false;
         }
@@ -105,5 +119,5 @@ public class Reserva implements Serializable{
         }
         return true;
     }
-    
+
 }
