@@ -25,9 +25,9 @@
                     Local:<br/> <p:inputText value="#{sala.novaSala.local}" required="true" 
                                         requiredMessage="precisa de Local"/> <br/>	
                     <br/>
-                    <p:commandButton action="#{sala.cadastrarSala()}" value="Salvar" update="frm-cad,frm-sala"/>
+                    <h:commandButton action="#{sala.cadastrarSala()}" value="Salvar" />
                     <a/>
-                    <p:commandButton value="Cancelar" ajax="true" immediate="true" type="reset"/> <br/>	
+                    <h:commandButton value="Cancelar"  immediate="true" type="reset"/> <br/>	
                     
                
                 </p:fieldset>
@@ -35,7 +35,6 @@
             </h:form>
             <br/>
             <h:form id="frm">
-                <p:messages />
                 <p:fieldset legend="Reservas realizadas">
                     <p:dataTable var="r" value="#{reserva.listaReserva}" >
                        

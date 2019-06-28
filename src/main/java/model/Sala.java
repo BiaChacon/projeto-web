@@ -34,7 +34,7 @@ public class Sala implements Serializable{
     String local;
     
     @Column(name = "reserva")
-    Boolean reserva;
+    Boolean reserva = false;
 
     @OneToMany(mappedBy="sala", fetch = FetchType.LAZY, orphanRemoval=true, cascade = CascadeType.ALL)
     private List<Reserva> reservas = new ArrayList<Reserva>();

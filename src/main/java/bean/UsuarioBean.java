@@ -97,7 +97,7 @@ public class UsuarioBean {
     
     public String editar(){
         IUsuarioDao ud = new UsuarioDaoImpl();
-        ud.save(user);
+        //ud.save(user);
         return "/user/home.xhtml";
     } 
     

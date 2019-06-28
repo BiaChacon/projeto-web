@@ -59,7 +59,7 @@ public class ReservaBean {
         novaReserva.setUsuario(user);
         
         novaReserva.setSala(sala);
-        sala.setReserva(Boolean.TRUE);
+        sala.setReserva(true);
         //sd.save(sala);
         
         String data = "dd/MM/yyyy";
@@ -75,6 +75,12 @@ public class ReservaBean {
     }
 
     public String removerReservar(Reserva r){ 
+        
+        ISalaDao sd = new SalaDaoImpl();
+        Sala s = r.getSala();
+        s.setReserva(true);
+        //sd.save(s);
+        
         IReservaDao rd = new ReservaDaoImpl();
         rd.delete(r);
         return "";

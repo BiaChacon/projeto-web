@@ -41,10 +41,9 @@ public class SalaBean {
     }
     
     public String cadastrarSala(){
-        System.out.println("bean.SalaBean.cadastrarSala()aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-	FacesContext fc = FacesContext.getCurrentInstance();
+       
+        FacesContext fc = FacesContext.getCurrentInstance();
         //novaSala.setReserva(false);
-        System.out.println("bean.SalaBean.cadastrarSala()"+novaSala.getReserva());
         sd.save(novaSala);
         
 	FacesMessage mensagem = new FacesMessage("Cadastro efetuado com sucesso");
