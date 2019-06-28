@@ -9,10 +9,11 @@
         <ui:define name = "content">				
             
             <h:form>
-                <h:commandButton action="#{login.deslogar()}" value="Sair"/>    
+                <p:commandButton action="#{login.deslogar()}" value="Sair"/>    
             </h:form>
             
-            <h1 style="text-align: center;">Página de Administração</h1> 
+            <h1 style="text-align: center; background-color: pink; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; " >
+                Administração</h1> 
           
             <h:form id="frm-cad">
                 <p:messages />
@@ -57,12 +58,7 @@
                        <f:facet name="header">Responsável</f:facet>
                        #{r.usuario.nome}
                        </p:column>
-                       
-                        <p:column>
-                       <f:facet name="header">Cancelada</f:facet>
-                       #{r.cancelada}
-                       </p:column>
-                        
+                      
                         <p:column>
                         <f:facet name="header"></f:facet>
                         <h:commandButton action="#{reserva.removerReservar(r)}" value="Cancelar"/>

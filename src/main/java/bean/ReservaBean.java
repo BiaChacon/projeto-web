@@ -1,7 +1,9 @@
 package bean;
 
 import dao.ReservaDaoImpl;
+import dao.SalaDaoImpl;
 import interfaces.IReservaDao;
+import interfaces.ISalaDao;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -47,7 +49,7 @@ public class ReservaBean {
    
     public String reservarSala(Sala sala){
         
-        
+        ISalaDao sd = new SalaDaoImpl();
         IReservaDao rd = new ReservaDaoImpl();
    
         FacesContext fc = FacesContext.getCurrentInstance();
@@ -57,6 +59,8 @@ public class ReservaBean {
         novaReserva.setUsuario(user);
         
         novaReserva.setSala(sala);
+        sala.setReserva(Boolean.TRUE);
+        //sd.save(sala);
         
         String data = "dd/MM/yyyy";
 	Date agora = new Date();
@@ -64,7 +68,6 @@ public class ReservaBean {
 	String data1 = formata.format(agora);
         novaReserva.setInicio(agora);
         
-        novaReserva.setCancelada(Boolean.FALSE);
         rd.save(novaReserva);
       
         novaReserva = new Reserva();
@@ -73,8 +76,7 @@ public class ReservaBean {
 
     public String removerReservar(Reserva r){ 
         IReservaDao rd = new ReservaDaoImpl();
-        r.setCancelada(Boolean.TRUE);
-        rd.save(r);
+        rd.delete(r);
         return "";
     }
     

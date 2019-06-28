@@ -73,21 +73,11 @@ public class UsuarioBean {
     
     public List<Sala> getListaSalaDisp() {
         
-       IReservaDao rd = new ReservaDaoImpl();
-       List<Reserva> reservas;
-       Map<String, Object> condition = new HashMap<>();
-       condition.put("cancelada", false);
-       reservas =  rd.findAllByMulti(condition);
-       List<Sala> listaSalaReservadas = new ArrayList<>();
-       
-       ISalaDao sd = new SalaDaoImpl();
-       List<Sala> listaSalaD = sd.findAll();
-       
-        for(Reserva i : reservas){
-           listaSalaReservadas.add(i.getSala());
-        }
-        
-        listaSalaDisp = listaSalaD;
+       ISalaDao us = new SalaDaoImpl();
+        Map<String, Object> condition = new HashMap<>();
+        condition.put("reserva", false);
+        listaSalaDisp = us.findAllByMulti(condition);
+
         return listaSalaDisp;
     }
 

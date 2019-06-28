@@ -32,10 +32,13 @@ public class Sala implements Serializable{
     
     @Column(name = "local")
     String local;
+    
+    @Column(name = "reserva")
+    Boolean reserva;
 
     @OneToMany(mappedBy="sala", fetch = FetchType.LAZY, orphanRemoval=true, cascade = CascadeType.ALL)
     private List<Reserva> reservas = new ArrayList<Reserva>();
-
+    
     public List<Reserva> getReservas() {
         return reservas;
     }
@@ -68,13 +71,22 @@ public class Sala implements Serializable{
         this.identificador = identificador;
     }
 
+    public Boolean getReserva() {
+        return reserva;
+    }
+
+    public void setReserva(Boolean reserva) {
+        this.reserva = reserva;
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 43 * hash + Objects.hashCode(this.id);
-        hash = 43 * hash + Objects.hashCode(this.identificador);
-        hash = 43 * hash + Objects.hashCode(this.local);
-        hash = 43 * hash + Objects.hashCode(this.reservas);
+        hash = 19 * hash + Objects.hashCode(this.id);
+        hash = 19 * hash + Objects.hashCode(this.identificador);
+        hash = 19 * hash + Objects.hashCode(this.local);
+        hash = 19 * hash + Objects.hashCode(this.reserva);
+        hash = 19 * hash + Objects.hashCode(this.reservas);
         return hash;
     }
 
@@ -99,11 +111,13 @@ public class Sala implements Serializable{
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
+        if (!Objects.equals(this.reserva, other.reserva)) {
+            return false;
+        }
         if (!Objects.equals(this.reservas, other.reservas)) {
             return false;
         }
         return true;
     }
-
-
+    
 }
